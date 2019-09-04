@@ -11,8 +11,7 @@ router.get('/', function (req, res) {
     if (global.globalUserId == null || global.globalUserId == "") {
         res.redirect('401');
     } else {
-        database.db.query("select * from  wallet where UserId =? order by TransactionDate desc", [globalUserId], function (err, result) {
-
+        database.db.query("select * from  wallet where UserId =? order by CreatedDate desc", [globalUserId], function (err, result) {
             res.render('mywallet',{result:result});
         });
     }

@@ -77,9 +77,6 @@ router.get('/FetchWalletAmount', function (req, res, next) {
 
     res.setHeader('Content-Type', 'application/json');
 
-    console.log("userid");
-    console.log(global.globalUserId);
-
     if (global.globalUserId != null) {
         CommonFunctions.GetCurrentWalletBalance(globalUserId, function (response) {
             res.send({status: true, balance: response});

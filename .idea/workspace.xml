@@ -46,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="11.4.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Files" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -57,11 +57,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="S:\github repo\nodecrypto\Files" />
       <recent name="K:\Node\nodecrypto\public\profile" />
       <recent name="K:\Node\nodecrypto\uploads" />
       <recent name="K:\Node\nodecrypto" />
       <recent name="K:\Node\nodecrypto\public\assets" />
-      <recent name="K:\Node\nodecrypto\public\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -153,7 +153,7 @@
       <workItem from="1538559613218" duration="49000" />
       <workItem from="1549621174876" duration="706000" />
       <workItem from="1567570600953" duration="1550000" />
-      <workItem from="1567572597669" duration="1418000" />
+      <workItem from="1567572597669" duration="3029000" />
     </task>
     <servers />
   </component>

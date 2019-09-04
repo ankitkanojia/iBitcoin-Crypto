@@ -13,11 +13,11 @@ let date = require('date-and-time');
 const database = require("./database");
 
 function GetCurrentWalletBalance(userId, callback) {
-  console.log("userId" + userId);
-    database.db.query('select * from  wallet where UserId =? order by TransactionDate desc', [userId], (err, rows, fields) => {
-        console.log("err"+ err);
+
+    database.db.query('select * from  wallet where UserId =? order by CreatedDate desc', [userId], (err, rows, fields) => {
+
         if (!err && rows.length > 0) {
-            console.log("BALANCE" + rows[0].AvailableBalance);
+
             return callback(rows[0].AvailableBalance);
         } else {
             return 0;
@@ -27,7 +27,7 @@ function GetCurrentWalletBalance(userId, callback) {
 }
 
 function AddUserWalletLogs(userId, amount, referenceId, description, isCredit, callback) {
-    database.db.query('select * from  wallet where UserId =? order by TransactionDate desc', [userId], (err, rows, fields) => {
+    database.db.query('select * from  wallet where UserId =? order by CreatedDate desc', [userId], (err, rows, fields) => {
 
 
         if (!err && rows.length > 0) {

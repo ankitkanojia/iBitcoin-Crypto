@@ -58,8 +58,8 @@
                                             <th>Status</th>
                                             <th>Amount</th>
                                             <th>Purchase Price</th>
-                                            <th>Quntity</th>
-                                            <th>Profit/Loss</th>
+                                            <th>Quantity</th>
+
                                             <th style="width: 13% !important;">Action</th>
                                         </tr>
                                         </thead>
@@ -102,9 +102,7 @@
                                                     <td>
                                                         <%= result.BitcoinQuntity.toFixed(10) %>
                                                     </td>
-                                                    <td>
-                                                        <i class="fa fa-dollar"></i> <%= result.ProfitLoss.toFixed(4) %>
-                                                    </td>
+
                                                     <td style="width: 13% !important;">
                                                         <% if( result.StatusMasterId == 2 ) { %>
                                                             <% if( result.IsBuy == "buy"  ) { %>

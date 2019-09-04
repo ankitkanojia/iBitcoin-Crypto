@@ -37,7 +37,7 @@ router.post('/', function (req, res) {
             database.db.query(sql, [0, data.fullname, data.email, data.mobile, data.password], (err, rows, fields) => {
                 if (!err) {
                     database.db.query('SELECT * FROM users WHERE Email =? and Password =?', [data.email, data.password], (err, rows, fields) => {
-                        CommonFunctions.AddUserWalletLogs(rows[0].UserId, 100000, 0, 'Amount credited by admin for new registration', true, function (response) {
+                        CommonFunctions.AddUserWalletLogs(rows[0].UserId, 10000, 0, 'Amount credited by admin for new registration', true, function (response) {
                             global.globalMessage = "Registration done successfully";
                             return res.redirect('login');
                         });
