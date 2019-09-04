@@ -1,0 +1,44 @@
+Ansatz:
+
+(das hier ist nur eine deutsche und sehr grobe Erklärung meines Ansatz. Eine detaillierte Beschreibung der einzlenen API's und Funktionen findet sich in der README.md)
+
+Mein Lösungsantz bestand darin, dass ich grundsätzlich zwischen 4 verschiedenen Ebenen unterscheiden wollte. Es war mir von Anfang an wichtig, dass jede dieser Ebene ein eigenstänidges Modul repräsentiert.
+Grundsätzlich sit das gesamte Mühle-Spiel als Framework zu sehen und für jede Art der implementierung zu gebrauchen.
+
+Anmerkung: Die Koordination innerhalb des Boards ist zirkular. Das wird dann wichtug, wenn man mit Indexen arbietet.
+
+1. Die Komponente "MorrisBoard".
+  "MorrisBoard" regelt die komplette Logik des Mühle-Brettes und ist daher auch die größte aller Komponenten. Hier werden keinerlei Regeln validiert sondern vor allen Dingen Methoden zur Modifizierung des Boards oder solche zur Erkennung von Zusammenhängen gestellt.
+  Eine detaillierte Erklärung der API befindet sich in der README.md Datei. So existiert zum Beispiel innerhalb jedes Point-Objektes ein Getter "mills" der alle Mühlen ausgiebt, an denen der Point beteiligt ist. Das ist nur ein Beispiel.
+  Das "MorrisBoard" bietet also alle Tools um ein Mühlebrett logisch zu steuern, nicht aber Regel-Validierung für ein aktuelles Spiel. So besitzt es auch keine "Pieces" (Steine). Das Board weiß zwar, welche farbe ein Stein auf einem Point hat, dieser Farbe ist aber nur ein Wert der zu keinem festen Piece (Stein) führt. Das wird dann alles vom GameController gemacht.
+  Jeder Point enthält also eine Liste von dynamischen Gettern die seine Bezihung zur Außenwelt ausgeben und Zusammenhänge auf dem Spielfeld beschreiben.
+  Außerdem gibt die Property "mills" des "MorrisBoard" immer alle Mühlen auf dem Spielfeld aus.
+
+2. Die Komponente "MorrisGame".
+  "MorrisGame" ist der Game Controller der ein "MorrisBoard" steuert und Dinge wie Regelvalidierung oder Pieces-Management macht.
+  Ein ganz wichtiger Aspekt ist die sehr responsive und praktische Logik des Spielsstaus und der nächsten Züge. "nextTeam" ist also keineswegs eine statische Property die immer bei jedem Spielzug geändert wird, sondern hängt ganz einfach vom "__lastChangeset" ab. Sie wird also jedes Mal neu errechnet, dank ESC6 Getters ;-). Gleiches gilt für "nextAction", "phase" oder z.B. "gameOver".
+  Auch die Validierung nach den allgmeinen Mühle Regeln findet hier statt. Eine Interaktion mit dem Game Controller gibt entweder als "success" true oder false zurück, je nachdem ob ein solcher Zug erlaubt ist. Außerdem wird jeder erfolgreiche Zug inform seines Changesets gespeichert, so dass anhand von ihm die nächsten Interaktionen geplant werden können.
+  Auch eine Metjode namens "getMoves()" exisiert im Game Controller die im Grunde nichts anderes macht, als alle möglichen Züge auszuprobieren und nur die jenigen auszugeben die in einer speziellen Sandbox (Mehr über Regelvalidierung in der Sandbox in der Documentation) Umgebung als erlaubt gelten.
+3. Die Controller für das gesamte Spiel.
+
+  Hier liegt der vom User genutzte Controller der, je nachdem wie das Spiel implementiert ist, Events handlet usw. Diese Ebene steuert den Game Controller an und steuert dadurch das gesamte Spiel. Von hier aus wird dann auch die KI gesteuert.
+
+4. Die KI.
+  Diese Komponente wird von der vorherigen Komponente angesteuert und berechnet Züge.
+
+
+Es gibt also im gesamten Spiel nur 3 Properties die eine feste Gültigkeit besitzen. Das ist die "map" des "MorrisBoards" die, unabhängig von den "Pieces" des GameControllers feste "teams" für jeden Point festlegt. Dann gibt es noch die "Pieces" welche der Game Controller für jedes Team verwaltet. Diese zeigen mittels eines Indexes auf einen Point in der "Map". Und dann wäre da noch das Objekt "__lastChangeset" des Game Controllers welches die letzte Änderung beschreibt.
+Alles andere, also "pahse", "gameOver", "draw", "nextTeam" oder "nextAction" sind lediglich Getter die anhand von Informationen wie  "__lastChangeset" funktionieren.
+
+Das tolle an dieser Dynamik ist, dass sich mit wenigen Änderungen am Game Controller oder Board agroße Zusammenhänge ohne Probleme ändern lassen. Theoretisch ließe sich also auch einfach das "points" Array (Mehr darüber in der Documentation) um ein Item erweitern und das gesamte Spielfeld würde automatisch 4 statt 3 Points auf jeder Seite haben. Lediglich die "map" müsste in einem solchen Fall um entsprechende Points erweitert werden.
+
+
+Benutzung:
+
+Selbstvertändlich habe ich es nicht nur bei der Theorie gelassen sondern auch zwei Implementierungen von Mühle geschrieben.
+1. Als CLI Programm. Selbstervtändlich ist das ein wenig verrückt, da niemans ernsthaft Mühle in der Konsole spielen wollte aber es ging mir ums Prinzip. Schließlich hatte ich das ganze in Node.js geschrieben und da bietet sich eine direkte Implementierung für die Konsole ja nur an.
+   Einzige Einschränkung: Durch die doch sehr eingeschränkten Rendering Möglichkeiten der Konsole lässt sich das Konsolenspiel nur in der klassischen Variante mit 24 Feldern und einer Mittelverbindung pro Reihe spielen. Die eigentliche Modularität des Moduls ist hier also nicht für die Konsole geeignet, sondern darauf muss verzichtet werden. Ich weiß, das ist doof aber dynamisch Querverbindungne zu rendern, geschweige denn uneldich viele Points zu erzeugen ist mit text-basiertem Rendering leider nicht möglich. Dieses Rendering habe ich also notgedrungen statisch implementiert. Wer einen Einblick in die zahlreichen Modifikationsmöglichkeiten meiner "Engine" bekommen möchte, testet einfach die WebApp :)
+   Die Steuerung innerhalb der Konsole ist ebenso "suboptimal". Da mir nur Tastatur und Maus zur Verfügung stehen, habe ich ein "Cursor" Modul geschrieben, welches innerhalb des Spielfeldes selektiert.
+   Mit "Enter" lässt sich eine Aktion über einem Point ausführen. Ist ein "Move" gefragt, muss über "Enter" zuerst ein Start-Punkt und anschlißend ein Target Punkt selektiert werden. Da ich ab einem gewissen Punkt nur noch mit der WebApp debugged habe und Zeit ein begrenztes Gut ist, sind in der CLI Variante leider weder große Einstellungsmöglichkeiten, noch KI oder Serializing möglich. Dafür habe ich den Fokus dieser Feautures auf
+
+2. Die WebApp ist größtenteils selbsterklärend. Hier lassen sich Einstellungen treffen und Spiele starten sowie laden. Einfach ausprobieren ;-)

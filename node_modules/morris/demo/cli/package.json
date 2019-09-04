@@ -1,0 +1,20 @@
+{
+	"name": "morris-cli",
+	"version": "0.0.1",
+	"description": "Nine men's morris CLI",
+	"keywords": [
+		"cli",
+		"nine",
+		"mens",
+		"morris"
+	],
+	"license": "ISC",
+	"author": "Maurice Conrad",
+	"main": "cli.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		
+	}
+}

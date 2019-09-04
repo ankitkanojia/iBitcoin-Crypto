@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>iBitcoin login</title>
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Custom style for form control-->
+    <style>
+        .form-control {
+            height: auto !important;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/floating-labels.css">
+    <link href="../assets/vendor/md-snackbars/md-snackbars.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+<form class="form-signin" id="frmLogin" method="post">
+    <div class="text-center mb-4">
+        <a href="/"> <img class="mb-4 mt-1" src="../images/logo.png" alt="" width="120" height="120"></a>
+
+        <h1 class="h3 mb-3 font-weight-normal">iBitcoin Login Arena</h1>
+        <p>Login to see the all actions <code>:trade bitcoin with live price</code> via virtual wallet. </p>
+    </div>
+
+    <div class="form-label-group ">
+        <input type="email"  id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+        <label for="email">Email address</label>
+    </div>
+
+    <div class="form-label-group">
+        <!--<input type="password" autocomplete="new-password" id="password" name="password" class="form-control" placeholder="Password" required>-->
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        <label for="password">Password</label>
+    </div>
+
+    <div class="checkbox  mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+
+
+    <button class="btn btn-lg btn-primary btn-block  mb-3" type="submit">Sign in</button>
+
+    <div class="checkbox">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/registration" style="text-decoration: none">I`m new user here!</a>
+            </div>
+
+            <div class="text-right col-md-6">
+                <a href="/forgotpassword" style="text-decoration: none">Need help?</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="mt-4 text-muted text-center">&copy; All rights reserved - #company#. 2018-2019</p>
+
+</form>
+
+<script src="../jquery/dist/jquery.min.js"></script>
+<script src="../assets/vendor/md-snackbars/md-snackbars.min.js"></script>
+
+
+
+<input type="hidden" id="messageMDSnack"
+       value="<%- global.globalMessage != null && global.globalMessage != "" ? global.globalMessage : '' %>">
+<% if(global.globalMessage != null && global.globalMessage != "") {
+    global.globalMessage = ""
+} %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        const messageMDSnack = $('#messageMDSnack').val();
+        if (messageMDSnack !== "") {
+            MDSnackbars.show({text: messageMDSnack, timeout: 7500, align: 'right', animation: 'slideup'});
+            $('#messageMDSnack').val("");
+        }
+
+        $("#email").attr("placeholder", "some new value").trigger("md:updateinput");
+    });
+
+
+</script>
+</body>
+</html>

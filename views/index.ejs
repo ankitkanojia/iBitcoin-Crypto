@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include ../views/shared/head.ejs %>
+
+</head>
+
+<body class="">
+<!-- right-to-left -->
+<div class="splash active">
+    <div class="icon"></div>
+</div>
+<div class="wrapper">
+    <% include ../views/shared/navbar.ejs %>
+
+    <div class="content">
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 page-title-wrapper">
+                        <h1 class="page-title">Dashboard</h1>
+                        <h2 class="page-subtitle">Statistics</h2>
+                    </div>
+                    <div class="col-sm-4 d-none d-md-inline-block page-search-wrapper">
+                        <input type="text" class="form-control form-control-lg keyword-search"
+                               placeholder="Search for files & reports..">
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="page-body">
+            <div class="container-fluid">
+                <% include ../views/shared/leftnav.ejs %>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-7 col-sm-12">
+
+                            <div class="card card-default widget">
+
+                                <div class="card-body">
+                                    <div style="height:395px; padding-top: 15px;">
+                                        <div class="btcwdgt-chart" btc="true" bw-theme="light"></div>
+
+                                        <script>
+                                            (function (b, i, t, C, O, I, N) {
+                                                window.addEventListener('load', function () {
+                                                    if (b.getElementById(C)) return;
+                                                    I = b.createElement(i), N = b.getElementsByTagName(i)[0];
+                                                    I.src = t;
+                                                    I.id = C;
+                                                    N.parentNode.insertBefore(I, N);
+                                                }, false)
+                                            })(document, 'script', 'https://widgets.bitcoin.com/widget.js', 'btcwdgt');
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.col-md-9 -->
+                        <div class="col-md-5 col-sm-12">
+                            <div class="panel card-default widget">
+                                <div class="card-heading">
+                                    <div class="card-controls">
+                                        <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                        <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <h3 class="card-title">Live Trade Rate</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="margin-20" style="height: 202px;" id="rateBox">
+                                        <table class="table">
+                                            <tbody>
+                                            <tr>
+                                                <td class="text-center"><b>USD</b><br/><span class="btc"
+                                                                                             id="btcUsd"></span></td>
+                                                <td class="text-center"><b>INR</b><br/><span class="btc"
+                                                                                             id="btcInr"></span></td>
+                                                <td class="text-center"><b>GBP</b><br/><span class="btc"
+                                                                                             id="btcGbp"></span></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center"><b>Gross</b><br/><span id="btcUsdGross"></span>
+                                                </td>
+                                                <td class="text-center"><b>INR Rate</b><br/><span id="USDINR"></span>
+                                                </td>
+                                                <td class="text-center"><b>GBP Rate</b><br/><span id="USDGBP"></span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="chart-legend pull-right" style="padding-top: 30px">
+                                            <div class="item">
+                                                <div class="color background-success"></div>
+                                                Increase
+                                            </div>
+                                            <div class="item">
+                                                <div class="color background-danger"></div>
+                                                Decrease
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btcwdgt-news-ticker" bw-theme="light"></div>
+                                </div>
+                            </div>
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                    <% include ../views/shared/footer.ejs %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+<input type="hidden" id="hdPriceUsd" value="loading...">
+
+
+
+
+<script>
+    function GetTradeData() {
+        $.ajax({
+            url: '/GetTradeData',
+            type: "get",
+            success: function (data) {
+
+                $('#hdPriceUsd').val(data.price.toFixed(2));
+
+                var plusTick = '<i class="fa fa-level-up"></i>';
+                var minusTick = '<i class="fa fa-level-down"></i>';
+
+                if (data.tickDirection === "ZeroMinusTick" || data.tickDirection === "MinusTick") {
+                    //Minus
+                    $('#btcUsd').html(data.price.toFixed(2) + " " + minusTick);
+                    $('#btcInr').html(data.priceInr.toFixed(2) + " " + minusTick);
+                    $('#btcGbp').html(data.priceGbp.toFixed(2) + " " + minusTick);
+
+                    $('.btc').each(function () {
+                        $(this).removeClass('text-success');
+                        $(this).addClass('text-danger');
+                        $(this).animate({backgroundColor: '#fbcabd'});
+                        $(this).animate({backgroundColor: '#FFFFFF'});
+                    });
+                } else {
+                    //Plus
+                    $('#btcUsd').html(data.price.toFixed(2) + " " + plusTick);
+                    $('#btcInr').html(data.priceInr.toFixed(2) + " " + plusTick);
+                    $('#btcGbp').html(data.priceGbp.toFixed(2) + " " + plusTick);
+
+                    $('.btc').each(function () {
+                        $(this).removeClass('text-danger');
+                        $(this).addClass('text-success');
+                        $(this).animate({backgroundColor: '#9bdaaf'});
+                        $(this).animate({backgroundColor: '#FFFFFF'});
+                    });
+                }
+
+                $('#btcUsdGross').html(data.grossValue);
+                $('#USDINR').html(data.inrRate.toFixed(4));
+                $('#USDGBP').html(data.gbpRate.toFixed(4));
+
+                $('#btcUsdGross').animate({backgroundColor: '#acd7ff'});
+                $('#btcUsdGross').animate({backgroundColor: '#FFFFFF'});
+            }
+        });
+    };
+
+    function AssignStaticPricetoChart() {
+        $('.btcwdgt-header h2 span').next().html($('#hdPriceUsd').val());
+    }
+
+    $(document).ready(function () {
+        GetTradeData();
+
+        setInterval(function () {
+            GetTradeData();
+        }, 3000);
+
+        setInterval(function () {
+            AssignStaticPricetoChart();
+        }, 1000);
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<nav class="navbar navbar-spark navbar-toggleable navbar-expand-md">
+    <div class="container-fluid">
+        <button type="button" class="sidebar-open d-lg-none">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand d-none d-lg-inline-block" href="/">
+            <img class="mt-2" src="../images/logo.png" alt="" width="62" height="62">
+        </a>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/"> Dashboard</a>
+            </li>
+
+            <% if(global.globalUserId != null && global.globalUserId != ""){ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/myprofile"> My Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"> Logout</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <button type="button" class="btn btn-info" style="margin-top: 35px; margin-bottom: 40px;">
+                        <!--<i class="ion ion-ios-albums"></i> &nbsp;-->
+                        <span id="walletAmount"></span>
+                    </button>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <%if(global.globalProfile != null && global.globalProfile != ""){%>
+                            <img src="../../profile/<%-global.globalProfile%>" alt="Avatar" width="48" height="48"
+                                 class="avatar img-circle"/>
+                        <%}else{%>
+                            <img src="../../profile/default.jpg" alt="Avatar" width="48" height="48"
+                                 class="avatar img-circle"/>
+                        <%}%>
+
+                    </a>
+                </li>
+            <% } else{ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration"> Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login"> Login</a>
+                </li>
+            <% } %>
+
+
+
+
+        </ul>
+    </div>
+</nav>

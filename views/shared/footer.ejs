@@ -1,0 +1,104 @@
+<footer class="site-footer text-center">
+    <p>&copy; All rights reserved - #company#. 2018-2019</p>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="/">Home</a></li>
+        <li class="list-inline-item"><a href="/">Support</a></li>
+        <li class="list-inline-item"><a href="/">FAQ</a></li>
+        <li class="list-inline-item"><a href="/">Contact</a></li>
+    </ul>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<!-- NPM Packages -->
+<script src="../jquery/dist/jquery.min.js"></script>
+<script src="../popper.js/dist/umd/popper.min.js"></script>
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../flot/jquery.flot.js"></script>
+<script src="../flot/jquery.flot.resize.js"></script>
+<script src="../flot/jquery.flot.crosshair.js"></script>
+<script src="../flot/jquery.flot.stack.js"></script>
+<script src="../flot/jquery.flot.pie.js"></script>
+<script src="../bxslider/dist/jquery.bxslider.min.js"></script>
+<script src="../jvectormap/jquery-jvectormap.min.js"></script>
+<script src="../moment/min/moment.min.js"></script>
+<script src="../twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="../summernote/dist/summernote.min.js"></script>
+<script src="../fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="../morris.js/morris.min.js"></script>
+<script src="../raphael/raphael.min.js"></script>
+<script src="../gmaps/gmaps.min.js"></script>
+
+<!-- Vendor -->
+<script src="../assets/vendor/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../assets/vendor/mark/jquery.mark.min.js"></script>
+<script src="../assets/vendor/md-snackbars/md-snackbars.min.js"></script>
+<script src="../assets/vendor/zabuto/zabuto_calendar.min.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-world-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-africa-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-asia-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-cn-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-europe-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-in-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-north_america-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-oceania-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-south_america-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-uk_countries-mill.js"></script>
+<script src="../assets/vendor/jvectormap/jquery-jvectormap-us-aea.js"></script>
+
+<script src="../assets/js/textcoloranimation.js"></script>
+
+<!-- Theme -->
+<script src="../assets/js/spark.js"></script>
+<script src="../assets/js/pages/dashboard.js"></script>
+<script>
+    $(document).ready(function () {
+        Spark.init();
+        Page.init();
+    });
+</script>
+
+<input type="hidden" id="messageMDSnack"
+       value="<%- global.globalMessage != null && global.globalMessage != "" ? global.globalMessage : '' %>">
+<% if(global.globalMessage != null && global.globalMessage != "") {
+    global.globalMessage = ""
+} %>
+
+
+<!--Toast function-->
+<script>
+    function showMDSnack(message) {
+        MDSnackbars.show({text: message, timeout: 7500, align: 'right', animation: 'slideup'});
+    }
+
+    $(document).ready(function () {
+        const messageMDSnack = $('#messageMDSnack').val();
+        if (messageMDSnack !== "") {
+            showMDSnack(messageMDSnack);
+            $('#messageMDSnack').val("");
+        }
+    });
+</script>
+
+<script>
+
+    function CurrencyFormat(n, currency) {
+        return currency + n.toFixed(2).replace(/./g, function (c, i, a) {
+            return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+        });
+    }
+
+    $(document).ready(function () {
+        $.ajax({
+            url: '/FetchWalletAmount',
+            type: "get",
+            success: function (data) {
+                if (data.status) {
+                    $('#walletAmount').html(CurrencyFormat(data.balance, '<i class="fa fa-dollar"> </i> '));
+                }
+
+            }
+        });
+    });
+</script>

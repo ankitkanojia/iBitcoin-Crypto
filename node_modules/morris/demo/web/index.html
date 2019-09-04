@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Morris Game</title>
+    <script type="text/javascript" src="js/morrisgame.js"></script>
+    <script type="text/javascript" src="js/render.js"></script>
+    <script type="text/javascript" src="js/morrisAI.js"></script>
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+    <div class="menu view visible">
+      <h1>Morris Game</h1>
+      <div class="btns">
+        <div class="section">
+          <button class="btn btn-startgame">New Game</button>
+          <button class="btn btn-load">Load Game</button>
+          <input type="file" class="file-input">
+        </div>
+        <div class="section">
+          <span>Rows</span>
+          <input type="number" class="input-rows" min="1" value="3">
+        </div>
+        <div class="section">
+          <span>Points within row</span>
+          <div class="morris-point-selector">
+
+          </div>
+        </div>
+        <div class="section">
+          <span>AI</span>
+          <input type="checkbox" class="ai-check" checked>
+        </div>
+
+      </div>
+    </div>
+    <div class="game view">
+      <div class="bar bar-top">
+        <div class="actions actions-left">
+          <button class="btn btn-menu">Menu</button>
+        </div>
+        <div class="actions actions-right">
+          <button class="btn btn-export">Save</button>
+        </div>
+      </div>
+      <div class="board-main">
+        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 600 300" id="board">
+
+        </svg>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>

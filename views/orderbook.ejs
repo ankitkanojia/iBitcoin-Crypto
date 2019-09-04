@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include ../views/shared/head.ejs %>
+
+    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+<!-- right-to-left -->
+<div class="splash active">
+    <div class="icon"></div>
+</div>
+<div class="wrapper">
+    <% include ../views/shared/navbar.ejs %>
+
+    <div class="content">
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 page-title-wrapper">
+                        <h1 class="page-title">Order Book</h1>
+                        <h2 class="page-subtitle">History of your orders</h2>
+                    </div>
+                    <div class="col-sm-4 d-none d-md-inline-block page-search-wrapper">
+                        <input type="text" class="form-control form-control-lg keyword-search"
+                               placeholder="Search for files & reports..">
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="page-body">
+            <div class="container-fluid">
+                <% include ../views/shared/leftnav.ejs %>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-default widget">
+                                <div class="card-heading">
+                                    <div class="card-controls">
+                                        <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                        <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <h3 class="card-title">Order history</h3>
+                                </div>
+                                <div class="card-body">
+
+                                    <table id="example" class="table table-striped table-bordered" cellspacing="0"
+                                           width="100%">
+                                        <thead>
+                                        <tr>
+
+                                            <th>Date</th>
+                                            <th>Side</th>
+                                            <th>Status</th>
+                                            <th>Amount</th>
+                                            <th>Purchase Price</th>
+                                            <th>Quntity</th>
+                                            <th>Profit/Loss</th>
+                                            <th style="width: 13% !important;">Action</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <% if( (!!locals.result)) { %>
+                                            <% result.forEach(function(result) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= result.CreatedDate %>
+                                                    </td>
+
+                                                    <td>
+
+                                                        <% if( result.IsBuy == "buy" ) { %>
+                                                            <span class="text-success">Buy</span>
+                                                        <% } else { %>
+                                                            <span class="text-danger">Sell</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <% if( result.StatusMasterId == 1 ) { %>
+                                                            <span class="text-danger">Pending</span>
+                                                        <% } else if( result.StatusMasterId == 2 ) { %>
+                                                            <span class="text-info">Executed</span>
+                                                        <% } else if( result.StatusMasterId == 3 ) { %>
+                                                            <span class="text-success">Transacted</span>
+                                                        <% } else if( result.StatusMasterId == 4 ) { %>
+                                                            <span class="text-warning">On hold</span>
+                                                        <% }  else { %>
+                                                            <span>N/A</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <i class="fa fa-dollar"></i> <%= result.Amount.toFixed(2) %>
+                                                    </td>
+                                                    <td>
+                                                        <i class="fa fa-dollar"></i> <%= result.ExecutionPrice.toFixed(2) %>
+                                                    </td>
+                                                    <td>
+                                                        <%= result.BitcoinQuntity.toFixed(10) %>
+                                                    </td>
+                                                    <td>
+                                                        <i class="fa fa-dollar"></i> <%= result.ProfitLoss.toFixed(4) %>
+                                                    </td>
+                                                    <td style="width: 13% !important;">
+                                                        <% if( result.StatusMasterId == 2 ) { %>
+                                                            <% if( result.IsBuy == "buy"  ) { %>
+                                                                <a onclick="openModel(false, <%= result.OrderId %> )"
+                                                                   href="javascript:void(0)"
+                                                                   style="text-decoration: none"
+                                                                   class="text-danger"><i
+                                                                            class="ion ion-ios-basket"></i> Sell
+                                                                    order</a>
+                                                            <% } else { %>
+                                                                <a onclick="openModel(true, <%= result.OrderId %> )"
+                                                                   href="javascript:void(0)"
+                                                                   style="text-decoration: none"
+                                                                   class="text-success"><i class="ion ion-ios-cart"></i>
+                                                                    Buy order</a>
+                                                            <% } %>
+                                                        <% }  else { %>
+                                                            <span>N/A</span>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+                                        <% } %>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div><!-- /.col-md-12 -->
+
+                    </div>
+
+                    <% include ../views/shared/footer.ejs %>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+<form method="post">
+    <div class="modal fade" id="sellModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Bitcoin live rate (USD):</label>
+                        <input id="priceUsd" name="priceUsd" class="form-control" type="number" disabled value="0">
+                        <input type="hidden" id="hdUsdPrice" name="hdUsdPrice">
+                        <input type="hidden" id="hdOrderId" name="hdOrderId">
+                        <small class="text-danger">Order must be placed with the live currency rate</small>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btnSellBuy" class="btn btn-primary"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script>
+    function openModel(isBuy, orderId) {
+
+        $('#hdOrderId').val(orderId);
+        if (isBuy) {
+            $('#exampleModalLabel').html('Buy bitcoin');
+            $('#btnSellBuy').html('Confirm to buy');
+        } else {
+            $('#exampleModalLabel').html('Sell bitcoin');
+            $('#btnSellBuy').html('Confirm to sell');
+        }
+        $('#sellModel').modal('show');
+    }
+
+    function GetTradeData() {
+        $.ajax({
+            url: '/GetTradeData',
+            type: "get",
+            success: function (data) {
+                $('#priceUsd').val(data.price.toFixed(2));
+                $('#hdUsdPrice').val(data.price.toFixed(2));
+            }
+        });
+    };
+
+    $(document).ready(function () {
+
+        $('#example').DataTable({
+            "aaSorting": []
+        });
+        GetTradeData();
+        setInterval(function () {
+            GetTradeData();
+        }, 3000);
+    });
+</script>
+
+</body>
+</html>

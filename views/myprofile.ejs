@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include ../views/shared/head.ejs %>
+
+</head>
+
+<body class="">
+<!-- right-to-left -->
+<div class="splash active">
+    <div class="icon"></div>
+</div>
+<div class="wrapper">
+    <% include ../views/shared/navbar.ejs %>
+
+    <div class="content">
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 page-title-wrapper">
+                        <h1 class="page-title">Profile</h1>
+                        <h2 class="page-subtitle">Update your personal details</h2>
+                    </div>
+                    <div class="col-sm-4 d-none d-md-inline-block page-search-wrapper">
+                        <input type="text" class="form-control form-control-lg keyword-search"
+                               placeholder="Search for files & reports..">
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="page-body">
+            <div class="container-fluid">
+                <% include ../views/shared/leftnav.ejs %>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-default widget">
+                                <div class="card-heading">
+                                    <div class="card-controls">
+                                        <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                        <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <h3 class="card-title">Update Profile Details</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <style>
+                                            .profile-ratings i {
+                                                font-size: 12px;
+                                                color: #dd0000;
+                                            }
+
+                                            .avatar-pic {
+                                                width: 120px;
+                                            }
+
+                                            /* Hide the file input using
+                                            opacity */
+                                            [type=file] {
+                                                position: absolute;
+                                                filter: alpha(opacity=0);
+                                                opacity: 0;
+                                                padding-top: 10px !important;
+                                            }
+
+                                            [type=file] + label {
+                                                border: 1px solid #CCC;
+                                                border-radius: 3px;
+                                                text-align: left;
+                                                padding: 8px;
+                                                width: 120px;
+                                                left: 0;
+                                                position: relative;
+                                                margin: 10px 0;
+                                            }
+
+                                            [type=file] + label {
+                                                text-align: center;
+                                                top: 0.5em;
+                                                /* Decorative */
+                                                background: #333;
+                                                color: #fff;
+                                                border: none;
+                                                cursor: pointer;
+                                            }
+
+                                            [type=file] + label:hover {
+                                                background: #3399ff;
+                                            }
+
+                                        </style>
+
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <% if(global.globalProfile != null && global.globalProfile != ""){ %>
+                                                    <img  id="avatarPreview" src="../../profile/<%- global.globalProfile %>" alt="Avatar"
+                                                         width="110"
+                                                         class="rounded-circle z-depth-1-half avatar-pice"/>
+                                                <% }else{ %>
+                                                    <img id="avatarPreview" src="../../profile/default.jpg" alt="Avatar" width="110"
+                                                         class="rounded-circle z-depth-1-half avatar-pic"/>
+                                                <% } %>
+
+                                                <br>
+                                                <input accept="image/*" id="avatar" name="avatar" type="file" placeholder="Add avatar"/>
+                                                <label id="avatarLbl" for="avatar">Change avatar</label>
+                                                <div class="clearfix"></div>
+                                                <h3 style="margin-top: 10px"><%- (!!locals.user) ? user.FullName : '' %></h3>
+                                                <div class="profile-ratings">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <h6 style="color: gray">You are a Free Member</h6>
+
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="example-number-input" class="form-label">Full
+                                                            name:</label>
+                                                        <input id="FullName" name="FullName" class="form-control"
+                                                               type="text"
+                                                               placeholder="Joe Smith"
+                                                               value="<%- (!!locals.user) ? user.FullName : '' %>"
+                                                               required>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="example-number-input" class="form-label">Email:
+                                                        </label>
+                                                        <input class="form-control"
+                                                               type="text" disabled
+                                                               value="<%- (!!locals.user) ? user.Email : '' %>"
+                                                               required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+
+                                                        <label for="example-number-input" class="form-label">Mobile:
+                                                        </label>
+                                                        <input id="Mobile" name="Mobile" class="form-control"
+                                                               type="text"
+                                                               placeholder="99XXXXXXXX"
+                                                               value="<%- (!!locals.user) ? user.Mobile : '' %>"
+                                                               required>
+                                                        <br/>
+                                                        <label for="example-number-input"
+                                                               class="form-label">City:</label>
+                                                        <input id="City" name="City" class="form-control"
+                                                               type="text"
+                                                               placeholder="Vadodara"
+                                                               value="<%- (!!locals.user) ? user.City : '' %>">
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="example-number-input"
+                                                               class="form-label">Address:</label>
+                                                        <textarea id="Address" name="Address" class="form-control"
+                                                                  rows="5"
+                                                                  cols="50"
+                                                                  placeholder="401, Lakulesh Tower, Nr. Genda Circle, Alkapuri"> <%- (!!locals.user) ? user.Address : '' %>
+
+                                                </textarea>
+
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <button class="btn btn-success float-right" type="submit">Update
+                                                    Profile
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div><!-- /.col-md-12 -->
+                    </div>
+
+                    <% include ../views/shared/footer.ejs %>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+
+
+<input type="hidden" id="textMDSnack" value="<%- (!!locals.message) ? message : '' %>">
+<script type="text/javascript">
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#avatarPreview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(document).ready(function () {
+        $('#avatar').change(function () {
+
+            readURL(this);
+        });
+
+
+        const textMDSnack = $('#textMDSnack').val();
+        if (textMDSnack !== "") {
+            showMDSnack(textMDSnack);
+            ('#textMDSnack').val("");
+        }
+    });
+</script>
+
+
+</body>
+</html>

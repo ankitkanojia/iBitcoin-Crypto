@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include ../views/shared/head.ejs %>
+
+</head>
+
+<body class="">
+<!-- right-to-left -->
+<div class="splash active">
+    <div class="icon"></div>
+</div>
+<div class="wrapper">
+    <% include ../views/shared/navbar.ejs %>
+ 
+    <div class="content">
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 page-title-wrapper">
+                        <h1 class="page-title">Buy bitcoin</h1>
+                        <h2 class="page-subtitle">with real time price</h2>
+                    </div>
+                    <div class="col-sm-4 d-none d-md-inline-block page-search-wrapper">
+                        <input type="text" class="form-control form-control-lg keyword-search"
+                               placeholder="Search for files & reports..">
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="page-body">
+            <div class="container-fluid">
+                <% include ../views/shared/leftnav.ejs %>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-default widget">
+                                <div class="card-heading">
+                                    <div class="card-controls">
+                                        <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                        <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <h3 class="card-title">Buy Bitcoin</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post">
+                                        <div class="form-row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="example-number-input" class="form-label">Live price
+                                                    (USD)</label>
+                                                <input id="priceUsd" name="priceUsd" class="form-control" type="number" readonly
+                                                       value="0">
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="example-number-input" class="form-label">Live price
+                                                    (INR)</label>
+                                                <input id="priceInr" name="priceInr" class="form-control" type="number" readonly
+                                                       value="0">
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="example-number-input" class="form-label">Live price
+                                                    (GBP)</label>
+                                                <input id="priceGbp" name="priceGbp" class="form-control" type="number" readonly
+                                                       value="0">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="example-number-input" class="form-label">Purchase Amount
+                                                    (USD)</label>
+                                                <input id="Amount" name="Amount" class="form-control" type="text"
+                                                       placeholder="xxx.xx" required>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="example-number-input" class="form-label">Bitcoin</label>
+                                                <input id="Bitcoin" class="form-control" type="text" readonly value="0">
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="example-number-input" class="form-label">Symbol</label>
+                                                <input id="Symbol" name="Symbol" class="form-control" type="text" readonly
+                                                       value="XBTUSD">
+                                            </div>
+                                        </div>
+                                        <small class="text-danger">
+                                            Note: Stop-Loss & Limit options will be coming soon.
+                                        </small>
+                                        <hr/>
+                                        <button class="btn btn-success" type="submit">Submit order</button>
+                                        <br>
+                                        <small class="text-success">
+                                            Order will be placed with real time amount
+                                        </small>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!-- /.col-md-12 -->
+                    </div>
+
+                    <% include ../views/shared/footer.ejs %>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+
+
+
+<script type="text/javascript">
+    function calculateBitcoin() {
+        const amount = parseFloat($('#Amount').val());
+        const price = parseFloat($('#priceUsd').val());
+        $('#Bitcoin').val(parseFloat(amount / price).toFixed(6));
+    }
+
+    $(document).ready(function () {
+
+        $('#Amount').on('change', function () {
+            calculateBitcoin();
+        });
+    });
+</script>
+
+
+<script>
+    function GetTradeData() {
+        $.ajax({
+            url: '/GetTradeData',
+            type: "get",
+            success: function (data) {
+                $('#priceUsd').val(data.price.toFixed(2));
+                $('#priceInr').val(data.priceInr.toFixed(2));
+                $('#priceGbp').val(data.priceGbp.toFixed(2));
+            }
+        });
+    };
+
+    $(document).ready(function () {
+        GetTradeData();
+        setInterval(function () {
+            GetTradeData();
+        }, 3000);
+    });
+</script>
+
+
+</body>
+</html>

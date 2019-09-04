@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include ../views/shared/head.ejs %>
+
+    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+<!-- right-to-left -->
+<div class="splash active">
+    <div class="icon"></div>
+</div>
+<div class="wrapper">
+    <% include ../views/shared/navbar.ejs %>
+
+    <div class="content">
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 page-title-wrapper">
+                        <h1 class="page-title">My Wallet</h1>
+                        <h2 class="page-subtitle">History of your transactions</h2>
+                    </div>
+                    <div class="col-sm-4 d-none d-md-inline-block page-search-wrapper">
+                        <input type="text" class="form-control form-control-lg keyword-search"
+                               placeholder="Search for files & reports..">
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="page-body">
+            <div class="container-fluid">
+                <% include ../views/shared/leftnav.ejs %>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-default widget">
+                                <div class="card-heading">
+                                    <div class="card-controls">
+                                        <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                        <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <h3 class="card-title">My Wallet</h3>
+                                </div>
+                                <div class="card-body">
+
+                                    <table id="example" class="table table-striped table-bordered" cellspacing="0"
+                                           width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Side</th>
+                                            <th style="width: 25%">Date</th>
+
+                                            <th>Transaction Amount</th>
+                                            <th>Balance</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <% if( (!!locals.result)) { %>
+                                            <% result.forEach(function(result) { %>
+                                                <tr>
+                                                    <td>
+                                                        <% if( result.IsCredit.lastIndexOf(1) == 0) { %>
+                                                            <span class="text-success">Credited</span>
+                                                        <% } else { %>
+                                                            <span class="text-danger">Debited</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td style="width: 25%">
+                                                        <%= result.TransactionDate %>
+                                                    </td>
+
+                                                    <td>
+                                                        <%= result.LastTransaction.toFixed(2) %>
+                                                    </td>
+                                                    <td>
+                                                        <%= result.AvailableBalance.toFixed(2) %>
+                                                    </td>
+                                                    <td>
+                                                        <%= result.Description %>
+                                                    </td>
+
+
+                                                </tr>
+                                            <% }) %>
+                                        <% } %>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div><!-- /.col-md-12 -->
+
+                    </div>
+
+                    <% include ../views/shared/footer.ejs %>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+
+<script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "aaSorting": []
+        });
+    });
+</script>
+
+</body>
+</html>

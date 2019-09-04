@@ -1,0 +1,84 @@
+<div class="page-sidebar toggled sidebar">
+    <nav class="sidebar-collapse d-none d-lg-block">
+        <i class="ion ion-ios-arrow-forward show-on-collapsed"></i>
+        <i class="ion ion-ios-arrow-back hide-on-collapsed"></i>
+    </nav>
+    <ul class="nav nav-pills nav-stacked" id="sidebar-stacked">
+        <li class="d-lg-none">
+            <a href="#" class="sidebar-close"><i class="fa fa-arrow-left"></i></a>
+        <li class="d-lg-none">
+            <a href="#" class="sidebar-close"><i class="ion ion-ios-arrow-left"></i></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/">
+                <i class="ion ion-ios-home"></i>
+                <span class="nav-text">Dashboard</span>
+            </a>
+        </li>
+
+        <% if(global.globalUserId != null && global.globalUserId != ""){ %>
+            <li class="nav-item">
+                <a class="nav-link" href="/buy">
+                    <i class="ion ion-ios-cart"></i>
+                    <span class="nav-text">Buy bitcoin</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/sell">
+                    <i class="ion ion-ios-basket"></i>
+                    <span class="nav-text">Sell bitcoin</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/orderbook">
+                    <i class="ion ion-ios-clipboard"></i>
+                    <span class="nav-text">
+                    Order book &nbsp;
+                    <span class="badge badge-pill badge-nav badge-warning">New</span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/mywallet">
+                    <i class="ion ion-ios-list-box"></i>
+                    <span class="nav-text">
+                     Wallet history
+
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/myprofile">
+                    <i class="ion ion-ios-options"></i>
+                    <span class="nav-text">My profile</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class="ion ion-ios-log-out"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </li>
+        <% } else{ %>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">
+                    <i class="ion ion-ios-log-in"></i>
+                    <span class="nav-text">Login</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/registration">
+                    <i class="ion ion-ios-contacts"></i>
+                    <span class="nav-text">Registration</span>
+                </a>
+            </li>
+        <% } %>
+
+    </ul>
+</div>

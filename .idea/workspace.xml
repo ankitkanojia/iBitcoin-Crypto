@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9e8e35ca-ed84-43e7-8fcb-f4001d3c72d6" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ejs</find>
+      <find>main</find>
+      <find>PriceInr</find>
+      <find>bootstrap</find>
+      <find>node</find>
+      <find>npm</find>
+      <find>GetLiveTradeData</find>
+      <find>glo</find>
+      <find>include</find>
+      <find>request</find>
+      <find>database</find>
+      <find>UserId</find>
+      <find>res.locals.UserId</find>
+      <find>ckiefullname</find>
+      <find>GetTradeData</find>
+      <find>priceUsd</find>
+      <find>walletAmount</find>
+      <find>(INR)</find>
+      <find>hdUsdPrice</find>
+      <find>avatar-pic</find>
+      <find>$RKHunt</find>
+      <find>2018</find>
+      <find>riowebs</find>
+      <find>console.lo</find>
+      <find>options</find>
+      <find>node_modules</find>
+      <find>nodec</find>
+      <find>host</find>
+      <find>password</find>
+      <find>node_bitcoin</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>riowebs.com</replace>
+      <replace>../content/</replace>
+      <replace>/</replace>
+      <replace>&lt;%- include(&quot;../views/shared/leftnav.ejs&quot;) %&gt;</replace>
+      <replace />
+      <replace>#company#</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/nodecrypto" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectId" id="1QMBUCyBqO1Rkh06HElA5KMSbrF" />
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JSUnresolvedFunction</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="11.4.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="K:\Node\nodecrypto\public\profile" />
+      <recent name="K:\Node\nodecrypto\uploads" />
+      <recent name="K:\Node\nodecrypto" />
+      <recent name="K:\Node\nodecrypto\public\assets" />
+      <recent name="K:\Node\nodecrypto\public\images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.bin\www">
+    <configuration name="bin\www JavaScript" type="JavascriptDebugType" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.bin\www JavaScript" />
+      <item itemvalue="Node.js.bin\www" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e8e35ca-ed84-43e7-8fcb-f4001d3c72d6" name="Default Changelist" comment="" />
+      <created>1536569161319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1536569161319</updated>
+      <workItem from="1536569169038" duration="12689000" />
+      <workItem from="1536638800711" duration="8851000" />
+      <workItem from="1536656219224" duration="14499000" />
+      <workItem from="1536725169220" duration="13483000" />
+      <workItem from="1536747152861" duration="262000" />
+      <workItem from="1536747508055" duration="9376000" />
+      <workItem from="1536833479089" duration="2911000" />
+      <workItem from="1536897927890" duration="8900000" />
+      <workItem from="1536916406649" duration="12418000" />
+      <workItem from="1536931255240" duration="78000" />
+      <workItem from="1537163082012" duration="2000" />
+      <workItem from="1537163146960" duration="12777000" />
+      <workItem from="1537182354011" duration="1131000" />
+      <workItem from="1537184929867" duration="610000" />
+      <workItem from="1537243954791" duration="2336000" />
+      <workItem from="1537254332977" duration="3770000" />
+      <workItem from="1537263391139" duration="308000" />
+      <workItem from="1537263722395" duration="1145000" />
+      <workItem from="1537265236190" duration="2531000" />
+      <workItem from="1537269876226" duration="4079000" />
+      <workItem from="1537417185416" duration="21990000" />
+      <workItem from="1537512561136" duration="834000" />
+      <workItem from="1537513596476" duration="3441000" />
+      <workItem from="1537520883403" duration="418000" />
+      <workItem from="1537521377744" duration="2000" />
+      <workItem from="1537524786417" duration="1100000" />
+      <workItem from="1537526061205" duration="30000" />
+      <workItem from="1537526590866" duration="475000" />
+      <workItem from="1537528406087" duration="2339000" />
+      <workItem from="1537534172040" duration="1346000" />
+      <workItem from="1537762954054" duration="72000" />
+      <workItem from="1537763035011" duration="13922000" />
+      <workItem from="1537782253974" duration="11072000" />
+      <workItem from="1537849514523" duration="14812000" />
+      <workItem from="1537872097798" duration="7000" />
+      <workItem from="1537872426679" duration="674000" />
+      <workItem from="1537875048046" duration="260000" />
+      <workItem from="1537875779210" duration="579000" />
+      <workItem from="1537877597262" duration="98000" />
+      <workItem from="1537877762231" duration="15000" />
+      <workItem from="1537879120345" duration="95000" />
+      <workItem from="1537950990849" duration="2559000" />
+      <workItem from="1537953870626" duration="5177000" />
+      <workItem from="1537959234842" duration="7323000" />
+      <workItem from="1538021439451" duration="790000" />
+      <workItem from="1538022247344" duration="5351000" />
+      <workItem from="1538028347267" duration="123000" />
+      <workItem from="1538028481553" duration="4498000" />
+      <workItem from="1538125918121" duration="3000" />
+      <workItem from="1538378119393" duration="5515000" />
+      <workItem from="1538390724695" duration="679000" />
+      <workItem from="1538395609772" duration="2102000" />
+      <workItem from="1538463606498" duration="10476000" />
+      <workItem from="1538484573389" duration="648000" />
+      <workItem from="1538556023693" duration="1764000" />
+      <workItem from="1538559613218" duration="49000" />
+      <workItem from="1549621174876" duration="706000" />
+      <workItem from="1567570600953" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="2">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/nodecrypto" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/Helpers/Utilities.js</url>
+          <line>13</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
