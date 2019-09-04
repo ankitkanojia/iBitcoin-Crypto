@@ -13,9 +13,11 @@ let date = require('date-and-time');
 const database = require("./database");
 
 function GetCurrentWalletBalance(userId, callback) {
-
+  console.log("userId" + userId);
     database.db.query('select * from  wallet where UserId =? order by TransactionDate desc', [userId], (err, rows, fields) => {
+        console.log("err"+ err);
         if (!err && rows.length > 0) {
+            console.log("BALANCE" + rows[0].AvailableBalance);
             return callback(rows[0].AvailableBalance);
         } else {
             return 0;

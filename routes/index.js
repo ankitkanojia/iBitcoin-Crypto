@@ -35,6 +35,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/GetTradeData', function (req, res, next) {
+
+
     BitmexApis.GetLiveTradeData("XBTUSD", function (response) {
         const jsonTrade = JSON.parse(JSON.stringify(response[0]));
         const jsonRate = JSON.parse(JSON.stringify(response[1]));
@@ -73,8 +75,10 @@ router.get('/logout', function (req, res, next) {
 
 router.get('/FetchWalletAmount', function (req, res, next) {
 
-
     res.setHeader('Content-Type', 'application/json');
+
+    console.log("userid");
+    console.log(global.globalUserId);
 
     if (global.globalUserId != null) {
         CommonFunctions.GetCurrentWalletBalance(globalUserId, function (response) {

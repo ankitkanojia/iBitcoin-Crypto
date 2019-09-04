@@ -16,56 +16,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>ejs</find>
-      <find>main</find>
-      <find>PriceInr</find>
-      <find>bootstrap</find>
-      <find>node</find>
-      <find>npm</find>
-      <find>GetLiveTradeData</find>
-      <find>glo</find>
-      <find>include</find>
-      <find>request</find>
-      <find>database</find>
-      <find>UserId</find>
-      <find>res.locals.UserId</find>
-      <find>ckiefullname</find>
-      <find>GetTradeData</find>
-      <find>priceUsd</find>
-      <find>walletAmount</find>
-      <find>(INR)</find>
-      <find>hdUsdPrice</find>
-      <find>avatar-pic</find>
-      <find>$RKHunt</find>
-      <find>2018</find>
-      <find>riowebs</find>
-      <find>console.lo</find>
-      <find>options</find>
-      <find>node_modules</find>
-      <find>nodec</find>
-      <find>host</find>
-      <find>password</find>
-      <find>node_bitcoin</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>riowebs.com</replace>
-      <replace>../content/</replace>
-      <replace>/</replace>
-      <replace>&lt;%- include(&quot;../views/shared/leftnav.ejs&quot;) %&gt;</replace>
-      <replace />
-      <replace>#company#</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/nodecrypto" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
   </component>
   <component name="ProjectId" id="1QMBUCyBqO1Rkh06HElA5KMSbrF" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -200,18 +152,10 @@
       <workItem from="1538556023693" duration="1764000" />
       <workItem from="1538559613218" duration="49000" />
       <workItem from="1549621174876" duration="706000" />
-      <workItem from="1567570600953" duration="7000" />
+      <workItem from="1567570600953" duration="1550000" />
+      <workItem from="1567572597669" duration="1418000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView" selected-index="2">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
