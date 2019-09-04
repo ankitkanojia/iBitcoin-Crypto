@@ -10,15 +10,6 @@ const db = mysql.createConnection({
      port: 3306,
  });
 
-// const db = mysql.createConnection({
-//     host: 'db4free.net',
-//     user: 'suchit',
-//     password: 'Suchit@16',
-//     database: 'dbriocrypto',
-//     multipleStatements: true
-// });
-
-
 
 db.connect(function(err) {
     if (err) throw err;
