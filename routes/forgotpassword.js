@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
         if (!err && rows.length > 0) {
 
             const replaceArray = ["#website#", "#resetlink#", "#signaturename#", "#signatureimg#", "#linkfacebook#", "#linktwitter#", "#linklinkedin#", "#logolight#", "#logodark#"];
-            const replaceArrayValue = ["http://#company#.com/", "http://#company#.com/", "Suchit Khunt", "https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/_compresseds/da24cf15-10e5-4af3-b8f7-56013fdde0e0.jpg\n",
+            const replaceArrayValue = ["http://#company#.com/", "http://#company#.com/", "Riowebs", "https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/_compresseds/da24cf15-10e5-4af3-b8f7-56013fdde0e0.jpg\n",
                 "http://#company#.com/", "http://#company#.com/", "http://#company#.com/", "https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/images/13f425ab-c680-4ae0-88de-7b493d95095f.jpg", "https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/images/dbe9c57f-5e00-4d9f-9719-5d36a9a02ebc.jpg"];
 
             SendGridHelpers.SendMailTemplete(1, replaceArray, replaceArrayValue, data.email);
